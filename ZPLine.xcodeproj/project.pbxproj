@@ -409,6 +409,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = wyq.ZPLine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -420,6 +421,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = wyq.ZPLine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -488,6 +490,7 @@
 				04FF76CF1CB70D1D002798F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		04FF76D01CB70D1D002798F1 /* Build configuration list for PBXNativeTarget "ZPLineTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +499,7 @@
 				04FF76D21CB70D1D002798F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		04FF76D31CB70D1D002798F1 /* Build configuration list for PBXNativeTarget "ZPLineUITests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +508,7 @@
 				04FF76D51CB70D1D002798F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

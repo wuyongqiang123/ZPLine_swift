@@ -13,15 +13,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.view.backgroundColor = UIColor.redColor()
+        self.view.backgroundColor = UIColor.blue
         //测试headview
-        let headView: UIView = UIView(frame: CGRectMake(100, 100, 100, 30))
-        headView.backgroundColor = UIColor.whiteColor()
+        let headView: UIView = UIView.init(frame: CGRect.init(x: 100.0, y: 100.0, width: 100.0, height: 30.0))
+        headView.backgroundColor = UIColor.white
         self.view.addSubview(headView)
         //显示top方向的线，间距是15
-        headView.showLineForDirection(.Top, leftPad: 15)
+//        headView.showLineForDirection(.Top, leftPad: 15)
+//        headView.showLineForDirection(direction: .Top, leftPad: 15.0)
         //显示top方向的线
-//        headView.showLineForDirection(.Top)
+        headView.showLineForDirection(direction: .Top)
 //        //显示left方向的线
 //        headView.showLineForDirection(.Left)
 //        //显示right方向的线

@@ -32,87 +32,87 @@ extension UIView{
 
     ///显示某个方向的线（上下左右）
     func showLineForHorizontalWithLeftPad(pad: CGFloat) {
-        self.showLineForDirection(.Top, pading: ZPPading(left: pad, right: 0, top: 0, bottom: 0))
-        self.showLineForDirection(.Bottom, pading: ZPPading(left: pad, right: 0, top: 0, bottom: 0))
+        showLineForDirection(direction: .Top, pading: ZPPading(left: pad, right: 0, top: 0, bottom: 0))
+        showLineForDirection(direction: .Bottom, pading: ZPPading(left: pad, right: 0, top: 0, bottom: 0))
     }
     ///显示某个方向的线，间距是padding
     func showLineForDirection(direction: ZPDirection, leftPad pad: CGFloat) {
-        self.showLineForDirection(direction, pading: ZPPading(left: pad, right: 0, top: 0, bottom: 0))
+        showLineForDirection(direction: direction, pading: ZPPading(left: pad, right: 0, top: 0, bottom: 0))
     }
     ///显示某方向的线和左边间距（一般是上下线）
     func showLineForDirection(direction: ZPDirection) {
-        self.showLineForDirection(direction, pading: ZPPading(left: 0, right: 0, top: 0, bottom: 0))
+        self.showLineForDirection(direction: direction, pading: ZPPading(left: 0, right: 0, top: 0, bottom: 0))
     }
     ///显示上下线和左边间距
     func showLineForDirection(direction: ZPDirection, pading: ZPPading) {
         //线条的高度
-        let onePx: CGFloat = 5
+        let onePx: CGFloat = 1
             //1 / min(UIScreen.mainScreen().scale, 2.0)
 
         //初始化
         let line: ZPLine = ZPLine()
         //根据枚举类型获取tag值
-        line.tag = self.lineTagWithDirection(direction)
+        line.tag = self.lineTagWithDirection(direction: direction)
         switch direction {
         case .Top:
-            line.autoresizingMask = [.FlexibleWidth, .FlexibleBottomMargin]
+            line.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
         case .Bottom:
-            line.autoresizingMask = [.FlexibleWidth, .FlexibleTopMargin]
+            line.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
         case .Left:
-            line.autoresizingMask = [.FlexibleHeight, .FlexibleRightMargin]
+            line.autoresizingMask = [.flexibleHeight, .flexibleRightMargin]
         case .Right:
-            line.autoresizingMask = [.FlexibleHeight, .FlexibleLeftMargin]
+            line.autoresizingMask = [.flexibleHeight, .flexibleLeftMargin]
         }
 
         self.addSubview(line)
-        self.bringSubviewToFront(line)
+        self.bringSubview(toFront: line)
 
         //更新位置
         switch direction {
         case .Top:
-            line.frame = CGRectMake(0, 0, self.frame.width, onePx)
+            line.frame = CGRect.init(x: 0.0, y: 0.0, width: self.frame.width, height: onePx)
         case .Bottom:
-            line.frame = CGRectMake(0, self.frame.height - onePx, self.frame.width, onePx)
+            line.frame = CGRect.init(x: 0.0, y: self.frame.height - onePx, width: self.frame.width, height: onePx)
         case .Left:
-            line.frame = CGRectMake(0, 0, onePx, self.frame.height)
+            line.frame = CGRect.init(x: 0.0, y: 0.0, width: onePx, height: self.frame.height)
         case .Right:
-            line.frame = CGRectMake(self.frame.width - onePx, 0, onePx, self.frame.height)
+            line.frame = CGRect.init(x: self.frame.width - onePx, y: 0.0, width: onePx, height: self.frame.height)
         }
 
         let p: CGPoint = line.frame.origin
         let s: CGSize = line.frame.size
-        line.frame = CGRectMake(p.x + pading.left, p.y + pading.top, s.width - pading.left - pading.right, s.height - pading.top - pading.bottom)
+        line.frame = CGRect.init(x: p.x + pading.left, y: p.y + pading.top, width: s.width - pading.left - pading.right, height: s.height - pading.top - pading.bottom)
     }
 
     ///显示垂直的线，也就是左右
     func showLineForVertical() {
-        self.showLineForDirection(.Left)
-        self.showLineForDirection(.Right)
+        self.showLineForDirection(direction: .Left)
+        self.showLineForDirection(direction: .Right)
     }
     ///显示水平的线，也就是上下
     func showLineForHorizontal() {
-        self.showLineForDirection(.Top)
-        self.showLineForDirection(.Bottom)
+        self.showLineForDirection(direction: .Top)
+        self.showLineForDirection(direction: .Bottom)
     }
     ///隐藏某个方向的线
     func hideLineForDirection(direction: ZPDirection) {
-        let line: ZPLine = self.lineWithDirection(direction)
-        line.hidden = true
+        let line: ZPLine = self.lineWithDirection(direction: direction)
+        line.isHidden = true
 
     }
     ///隐藏垂直（左右）的线
     func hideLineForVertical() {
-        self.hideLineForDirection(.Left)
-        self.hideLineForDirection(.Right)
+        self.hideLineForDirection(direction: .Left)
+        self.hideLineForDirection(direction: .Right)
     }
     ///隐藏水平（上下）的线
     func hideLineForHorizontal() {
-        self.hideLineForDirection(.Top)
-        self.hideLineForDirection(.Bottom)
+        self.hideLineForDirection(direction: .Top)
+        self.hideLineForDirection(direction: .Bottom)
     }
     ///获取某个方向的线
     func lineWithDirection(direction: ZPDirection) -> ZPLine {
-        return (self.viewWithTag(self.lineTagWithDirection(direction)) as! ZPLine)
+        return (self.viewWithTag(self.lineTagWithDirection(direction: direction)) as! ZPLine)
     }
     //获取tap值
     func lineTagWithDirection(direction: ZPDirection) -> Int {
@@ -136,7 +136,7 @@ class ZPLine: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         //线的颜色(颜色可自己修改)
-        self.backgroundColor = UIColor.lightGrayColor()
+        self.backgroundColor = UIColor.red
     }
     
     required init?(coder aDecoder: NSCoder) {
